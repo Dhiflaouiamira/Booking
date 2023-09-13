@@ -1,0 +1,27 @@
+{
+  "name": "booking_api",
+  "version": "1.0.0",
+  "description": "app web booking",
+  "main": "index.js",
+  
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhiflaouiamira/Booking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dhiflaouiamira/Booking/issues"
+  },
+  "homepage": "https://github.com/Dhiflaouiamira/Booking#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.1",
+    "nodemon": "^3.0.1"
+  }
+}
