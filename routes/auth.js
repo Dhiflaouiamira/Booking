@@ -1,4 +1,4 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
 
 
@@ -14,4 +14,4 @@ const router = express.Router();
 
 
 
-module.exports =   router;
+export default router

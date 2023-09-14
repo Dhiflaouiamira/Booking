@@ -4,6 +4,7 @@
   "description": "app web booking",
   "main": "index.js",
   
+  "type": "module",
   "scripts": {
     "start": "nodemon index.js"
   },
