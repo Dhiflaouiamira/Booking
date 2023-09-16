@@ -6,26 +6,40 @@ import authRoute from './routes/auth.js';
 import hotelsRoute from './routes/hotels.js';
 import roomsRoute from './routes/rooms.js';
 import usersRoute from './routes/users.js';
+import cookieParser from 'cookie-parser';
+
 
 dotenv.config();
 
 const dburl = process.env.dburl;
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3004;
 
 const app = express();
 
-app.use(cors());
-app.use(express.json({ limit: "50mb" }));
 
-app.get("/", (req, res) => {
-    res.send({ message: "Hello World!" });
-});
+app.use(cors());
+
+
 
 // Middlewares
+app.use(cookieParser())
+app.use(express.json());
+
 app.use('/api/auth', authRoute);
 app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
 app.use('/api/users', usersRoute);
+
+app.use((err, req, res, next) => {
+    const errorStatus = err.status || 500;
+    const errorMessage = err.message || "Something went wrong!";
+    return res.status(errorStatus).json({
+      success: false,
+      status: errorStatus,
+      message: errorMessage,
+      stack: err.stack,
+    });
+  });
 
 mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {

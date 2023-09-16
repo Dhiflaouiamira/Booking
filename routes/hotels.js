@@ -14,13 +14,14 @@ router.post("/", async (req, res) => {
   }
 });
 // get all hotels
-router.get("/", async (req, res) => {
+router.get("/", async (req, res,next) => {
    
+
     try {
       const Hotels = await Hotel.find({});
     res.status(200).json(Hotels) 
-    } catch (error) {
-      res.status(500).json(error);
+    } catch (err) {
+     next(err);
     }
   });
 
